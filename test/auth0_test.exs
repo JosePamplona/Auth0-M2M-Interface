@@ -28,7 +28,7 @@ defmodule Auth0Test do
       # Actual HTTP request
       assert {:error, :bad_tenant} = Auth0.request_token()
 
-      # Reverting change of config parameters change
+      # Reverting config parameters change
       Application.put_env(:auth0, :tenant, tenant)
     end
     
@@ -42,7 +42,7 @@ defmodule Auth0Test do
       # Actual HTTP request
       assert {:error, :access_denied} = Auth0.request_token()
 
-      # Reverting change of config parameters change
+      # Reverting config parameters change
       Application.put_env(:auth0, :client_id, client_id)
       # Temporary change to config parameters
       client_secret = Application.get_env(:auth0, :client_secret)
@@ -51,7 +51,7 @@ defmodule Auth0Test do
       # Actual HTTP request
       assert {:error, :access_denied} = Auth0.request_token()
 
-      # Reverting change of config parameters change
+      # Reverting config parameters change
       Application.put_env(:auth0, :client_secret, client_secret)
     end
     
@@ -149,7 +149,7 @@ defmodule Auth0Test do
       # Actual HTTP request
       assert {:error, :forbbiden} = Auth0.request(:get, "users")
 
-      # Reverting change of config parameters change
+      # Reverting config parameters change
       Application.put_env(:auth0, :tenant, tenant)
       Application.put_env(:auth0, :client_id, client_id)
       Application.put_env(:auth0, :client_secret, client_secret)

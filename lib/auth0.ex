@@ -6,7 +6,7 @@ defmodule Auth0 do
   alias Auth0.TokenCache
 
   @doc """
-    Makes a request to Auth0 Management API.
+    Makes a request to Auth0 Management API with a valid authentication token.
     """
   @spec request(
     method :: :get | :post | :head | :patch | :delete | :options | :put,
@@ -89,7 +89,7 @@ defmodule Auth0 do
               } ->
                 {:error, :not_found}
 
-              # Add here errors you want to support
+              # Add here errors to support
 
               _ ->
                 raise RuntimeError, """
@@ -146,7 +146,7 @@ defmodule Auth0 do
           } ->
             {:error, :access_denied}
             
-          # Add here errors you want to support
+          # Add here errors to support
           
           _ ->
             raise RuntimeError, """
