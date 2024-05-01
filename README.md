@@ -33,9 +33,9 @@ The configuration of the module will require the client application `tenant`,
 # config/config.exs
 
 config :auth0,
-  tenant: "dev-ypiPDELRvbhyDRLO.us.auth0.com",
-  client_id: "k4GTwihwfbqmko2ew5fneNN3dPDT5n67",
-  client_secret: "8HRHeB501D9bqC_jhBlcrCyU4ypiPDELneNN3dPDT5gcsquPWRLGieM6BQsL0BOS",
+  tenant: "dev-APP-TENANT.auth0.com",
+  client_id: "CLIENT-ID",
+  client_secret: "CLIENT-SECRET",
   request_opts: [
     pool_timeout: 5_000,
     receive_timeout: 15_000,
@@ -59,14 +59,14 @@ To make request to the Auth0 Management API, use `Auth0.request/1` indicating th
 
 ```elixir
 {:ok, %{
-  "user_id"    => "auth0|abcdef123456",
+  "user_id"    => "auth0|123456abcdef",
   "name"       => "John Doe",
   "identities" => [
     %{
       "connection" => "Username-Password-Authentication",
       "isSocial"   => false,
       "provider"   => "auth0",
-      "user_id"    => "abcdef123456"
+      "user_id"    => "123456abcdef"
     }
   ]
 }} = Auth0.request(:get, ["users", "auth0|abcdef123456"])
@@ -84,14 +84,14 @@ To include the tests that actually makes HTTP requests, it is required to set so
 
 ```sh
 # This credentials are for setting an main application to test request on.
-export AUTH0_TEST_TENANT="dev-ypiPDELRvbhyDRLO.us.auth0.com"
-export AUTH0_TEST_CLIEND_ID="k4GTwihwfbqmko2ew5fneNN3dPDT5n67"
-export AUTH0_TEST_CLIENT_SECRET="8HRHeB501D9bqC_jhBlcrCyU4ypiPDEL..."
+export AUTH0_TEST_TENANT="dev-TEST-APP-TENANT.auth0.com"
+export AUTH0_TEST_CLIEND_ID="TEST-CLIENT-ID"
+export AUTH0_TEST_CLIENT_SECRET="TEST-CLIENT-SECRET"
 
 # This application must have no scopes configured, to test its error mesagges.
-export AUTH0_NO_SCOPES_TENANT="dev-ypiPDELRvbhyDRLO.us.auth0.com"
-export AUTH0_NO_SCOPES_CLIENT_ID="k4GTwihwfbqmko2ew5fneNN3dPDT5n67"
-export AUTH0_NO_SCOPES_CLIENT_SECRET="8HRHeB501D9bqC_jhBlcrCyU4ypiPDEL..."
+export AUTH0_NO_SCOPES_TENANT="dev-NO-SCOPES-APP-TENANT.auth0.com"
+export AUTH0_NO_SCOPES_CLIENT_ID="NO-SCOPES-CLIENT-ID"
+export AUTH0_NO_SCOPES_CLIENT_SECRET="NO-SCOPES-CLIENT-SECRET"
 ```
 
 Once settled, run all tests:
